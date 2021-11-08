@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 // GET ONE USER
-router.get('/:id', (req, req) => {
+router.get('/:id', (req, res) => {
 
 });
 
