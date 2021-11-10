@@ -9,7 +9,16 @@ SO THAT I can be aware of whats going on around me
 
 '''
 ## Solution
-GIVEN a 
+Create an application 
+'''
 
-## Team Members and Tasks 
+'''
+## How to Use This Application 
+User must first input data to create an ID for the Community Board 
+THEN user can post any news, updates or information they would like 
+to share AND user can keep up with posts created by others within their living community..simple as that!
+
+
+
+## Team Members 
 
