@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS dorm_bulletin;
+DROP DATABASE IF EXISTS dorm_forum;
 
-CREATE DATABASE dorm_bulletin;
+CREATE DATABASE dorm_forum;
