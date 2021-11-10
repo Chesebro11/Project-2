@@ -7,7 +7,6 @@ UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) TYPE=INNODB;
 
-
 CREATE TABLE topics (
 topic_id		INT(8) NOT NULL AUTO_INCREMENT,
 topic_subject  		VARCHAR(255) NOT NULL,
