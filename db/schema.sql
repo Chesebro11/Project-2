@@ -1,4 +1,3 @@
-
 CREATE TABLE users (
 user_id 	INT(8) NOT NULL AUTO_INCREMENT,
 user_name	VARCHAR(30) NOT NULL,
@@ -7,7 +6,6 @@ user_rmNum  VARCHAR(30) NOT NULL,
 UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) TYPE=INNODB;
-
 
 CREATE TABLE topics (
 topic_id		INT(8) NOT NULL AUTO_INCREMENT,
@@ -25,4 +23,3 @@ post_topic		INT(8) NOT NULL,
 post_by		INT(8) NOT NULL,
 PRIMARY KEY (post_id)
 )
-
