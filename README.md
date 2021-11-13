@@ -23,6 +23,8 @@ to share AND user can keep up with posts created by others within their living c
 
 ## Deployed Application 
 Heroku:
+Github:
+URL link:
 
 
 ## Contributers 
