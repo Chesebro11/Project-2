@@ -5,6 +5,7 @@ const sequelize = require('./config/connection');
 // adding path for public folder
 const path = require('path');
 // handlebars consts
+const Handlebars = require("handlebars");
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
