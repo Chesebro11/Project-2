@@ -1,5 +1,6 @@
 const router = require ('express').Router();
 const { User, Post, Comment } = require('../../models');
+const Vote = require('../../models/Vote');
 
 // GET USERS
 router.get('/', (req, res) => {
@@ -32,6 +33,12 @@ router.get('/:id', (req, res) => {
                     model: Post,
                     attributes: ['title', 'post_content']
                 }
+            },
+            {
+                model: Post,
+                attributes: ['title'],
+                through: Vote,
+                as: 'voted_posts'
             }
         ]
     })
