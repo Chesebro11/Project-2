@@ -41,6 +41,11 @@ router.get('/:id', (req, res) => {
     });
 });
 
+//for login.handlebars
+router.get('/login', (req, res)=> {
+    res.render('login');
+});
+
 // POST ONE USER
 router.post('/', (req, res) => {
     User.create({
