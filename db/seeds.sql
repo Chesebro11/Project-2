@@ -1,8 +1,8 @@
-INSERT INTO users (user_name, user_email, user_pass, user_rmNum)
+INSERT INTO users (user_name, email, user_pass, user_rmNum)
 VALUES
 ("Jason", "Parse@Json.com", "NoneShallPass", 789);
 
-INSERT INTO posts (post_id, post_content, post_date, post_by)
+INSERT INTO posts (post_id, post_content, post_date, user_id)
 VALUES
 (
     1,
@@ -11,3 +11,5 @@ VALUES
     "Jason"
 
 );
+
+-- if there is an issue it might be with date
