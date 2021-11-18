@@ -1,1 +1,19 @@
 <h1>Welcome Home!</h1>
+<ol class="post-list">
+    {{#each posts as |post|}}
+  <li>
+    <article class="post">
+      <div class="title">
+        <a href="{{post_url}}" target="_blank">{{post.title}}</a>
+        <span>({{post_url}})</span>
+      </div>
+      <div class="meta">
+     {{post.user.username}} on
+        {{post.created_at}}
+        |
+        <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+      </div>
+    </article>
+    {{/each}}
+  </li>
+</ol>
