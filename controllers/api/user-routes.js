@@ -42,17 +42,12 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbUserData => {
-      if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+
+});
+
+//for login.handlebars
+router.get('/login', (req, res)=> {
+    res.render('login');
 });
 
 // POST ONE USER
@@ -80,33 +75,35 @@ router.post('/', (req, res) => {
 
 
 // LOGIN ROUTE
-router.post('/login', (req, res) => {
+router.post('/login', (req, res) => { 
     User.findOne({
         where: {
             email: req.body.email
         }
     }).then(dbUserData => {
         if (!dbUserData) {
-            res.status(400).json({ message: 'No user with that email address!' });
+            res.status(400).json({ message: 'There is no user with email address'});
             return;
         }
-
+        
         const validPassword = dbUserData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password!' });
+            res.status(400).json({ message: 'Password is incorrect' });
             return;
-        }
-
-        req.session.save(() => {
+          }
+      
+          req.session.save(() => {
             req.session.user_id = dbUserData.id;
-            req.sessions.username = dbUserData = dbUserData.username;
-            req.sessions.loggedIn = true;
-
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+      
+            res.json({ user: dbUserData, message: 'Login in succesful' });
+          });
         });
-    });
-});
+      });
+      
+ 
 
 // UPDATE USER
 router.put('/:id', (req, res) => {
@@ -137,15 +134,13 @@ router.delete('/:id', (req, res) => {
         }
     })
     .then(dbUserData => {
-        if(!dbUserData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+      req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username_id = dbUserData.username;
+          req.session.loggedIn = true;
+
+          res.json(dbUserData);
+      });
     })
 });
 

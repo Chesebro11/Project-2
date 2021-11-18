@@ -1,4 +1,16 @@
+const session = require('express-session');
 
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+    secret: 'Secret',
+    cookie: {},
+    resave: false,
+    saveUnintialized: true,
+    store: new SequelizeStore({
+        db: SequelizeStore
+    })
+};
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -7,6 +19,7 @@ const sequelize = require('./config/connection');
 const path = require('path');
 
 // handlebars consts
+const Handlebars = require("handlebars");
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
@@ -38,7 +51,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // join public folder path
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session(sess));
 // enable routes
 app.use(routes);
 
