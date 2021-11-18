@@ -1,5 +1,6 @@
 const router = require ('express').Router();
 const { User, Post, Comment } = require('../../models');
+const Vote = require('../../models/Vote');
 
 // GET USERS
 router.get('/', (req, res) => {
@@ -32,6 +33,12 @@ router.get('/:id', (req, res) => {
                     model: Post,
                     attributes: ['title', 'post_content']
                 }
+            },
+            {
+                model: Post,
+                attributes: ['title'],
+                through: Vote,
+                as: 'voted_posts'
             }
         ]
     })
@@ -51,12 +58,21 @@ router.post('/', (req, res) => {
         password: req.body.password,
         room_number: req.body.room_number
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
+    .then(dbUserData => {
+        req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+    
+          res.json(dbUserData);
+        });
+      })
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
-});
+      });
+  });
+
 
 // LOGIN ROUTE
 router.post('/login', (req, res) => { 
@@ -126,6 +142,17 @@ router.delete('/:id', (req, res) => {
           res.json(dbUserData);
       });
     })
+});
+
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.sessions.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 module.exports = router;

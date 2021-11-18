@@ -8,3 +8,4 @@ user_rmNum  VARCHAR(30) NOT NULL,
 UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) TYPE=INNODB;
+
