@@ -1,1 +1,12 @@
 <h1>Welcome Home!</h1>
+<div class="container-fluid bg-secondary">
+    <div class="container-lg">
+        <ol>
+            {{#each posts as |post|}}
+            <li>
+                {{> post-info post}}
+            </li>
+        </ol>
+    </div>
+</div>
+{{/each}}
