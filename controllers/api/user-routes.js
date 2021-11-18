@@ -1,5 +1,6 @@
 const router = require ('express').Router();
 const { User, Post, Comment } = require('../../models');
+const Vote = require('../../models/Vote');
 
 // GET USERS
 router.get('/', (req, res) => {
@@ -32,6 +33,12 @@ router.get('/:id', (req, res) => {
                     model: Post,
                     attributes: ['title', 'post_content']
                 }
+            },
+            {
+                model: Post,
+                attributes: ['title'],
+                through: Vote,
+                as: 'voted_posts'
             }
         ]
     })
@@ -56,34 +63,50 @@ router.post('/', (req, res) => {
         password: req.body.password,
         room_number: req.body.room_number
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
+    .then(dbUserData => {
+        req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+    
+          res.json(dbUserData);
+        });
+      })
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
-});
+      });
+  });
+
 
 // LOGIN ROUTE
 router.post('/login', (req, res) => {
-    //   User.findOne({
-    //     where: {
-    //       email: req.body.email
-    //     }
-    //   }).then(dbUserData => {
-    //     if (!dbUserData) {
-    //       res.status(400).json({ message: 'No user with that email address!' });
-    //       return;
-    //     }
-    
-    //     const validPassword = dbUserData.checkPassword(req.body.password);
-    //     if (!validPassword) {
-    //       res.status(400).json({ message: 'Incorrect password!' });
-    //       return;
-    //     }
-    
-    //     res.json({ user: dbUserData, message: 'You are now logged in!' });
-    //   });
- });
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user with that email address!' });
+            return;
+        }
+
+        const validPassword = dbUserData.checkPassword(req.body.password);
+
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.sessions.username = dbUserData = dbUserData.username;
+            req.sessions.loggedIn = true;
+
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    });
+});
 
 // UPDATE USER
 router.put('/:id', (req, res) => {
@@ -124,6 +147,17 @@ router.delete('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     })
+});
+
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.sessions.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 module.exports = router;
