@@ -1,4 +1,4 @@
-# Project-2: Dormitory Virtual Community Board
+# Project-2: Room and Bored 
 
 ## Problem 
 As A busy college student living in a dorm room 
