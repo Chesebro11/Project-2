@@ -54,7 +54,7 @@ router.get('/post/:id', (req, res) => {
         },
         attributes: [
             'id', 
-            'post_url',
+            'post_content',
             'title',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
