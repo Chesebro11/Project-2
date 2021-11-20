@@ -24,9 +24,9 @@ const sess = {
     })
 };
 
-
-const app = express();
 const PORT = process.env.PORT || 3001;
+const app = express();
+
 
 // set handlebars as the engine
 app.engine('handlebars', hbs.engine);
@@ -43,5 +43,5 @@ app.use(session(sess));
 app.use(routes);
 
 sequelize.sync({ force: false }).then (() => {
-    app.listen(PORT, () => console.log('Now listening'))
+    app.listen(PORT, () => console.log(`Now listening on port ${PORT}!`))
 });
