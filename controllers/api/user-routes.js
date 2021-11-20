@@ -133,17 +133,10 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbUserData => {
-      req.session.save(() => {
-          req.session.user_id = dbUserData.id;
-          req.session.username_id = dbUserData.username;
-          req.session.loggedIn = true;
-
-          res.json(dbUserData);
-      });
-    })
 });
 
+
+//LOGOUT USER
 router.post('/logout', (req, res) => {
     if(req.session.loggedIn) {
         req.sessions.destroy(() => {
