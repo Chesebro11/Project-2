@@ -1,3 +1,3 @@
-CREATE DATABASE dorm_forum;
+CREATE DATABASE dorm-forum;
 
-USE dorm_forum;
+USE dorm-forum;
