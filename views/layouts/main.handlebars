@@ -25,9 +25,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/views/login">Login</a>
-        </li>
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
         <li class="nav-item">
           <a class="nav-link" id="dipcity" href="#">Log out</a>
         </li>
