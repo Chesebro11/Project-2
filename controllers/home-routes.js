@@ -39,6 +39,7 @@ router.get('/', (req, res) => {
 
 // create login route
 router.get('/login', (req,res) => {
+    res.render('login')
     if (req.session.loggedIn) {
         res.redirect('/');
         return;
