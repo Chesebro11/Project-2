@@ -94,6 +94,9 @@ router.get('/post/:id', (req, res) => {
             res.status(500).json(err);
           });
       });
+
+      //Creating post route
+      
       
 
 
