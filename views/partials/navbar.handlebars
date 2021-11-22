@@ -9,17 +9,14 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+
         <li class="nav-item">
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <a class="nav-link active" aria-current="page" id="dipcity">logout</a>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+        <a class="nav-link active" aria-current="page" href="/login">login</a>
+        
         </li>
         <li class="nav-item">
             {{!-- Here is the post navbar --}}
-          <a class="nav-link" id="post" href="/create-post">Post!</a>
+          <a class="nav-link active" aria-current="page" id="post" href="/create-post">Post!</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,7 +30,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link active" aria-current="page" id="dipcity">logout</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -43,3 +40,5 @@
     </div>
   </div>
 </nav>
+
+<script src="/public/javascript/logout.js"></script>

@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
         }
     }).then(dbUserData => {
         if (!dbUserData) {
-            res.status(400).json({ message: 'There is no user with email address'});
+            res.status(400).json({ message: 'Erps, wrong email'});
             return;
         }
         
