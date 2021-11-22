@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 
 async function signupFormHandler(event) {
     event.preventDefault();
@@ -9,7 +9,7 @@ async function signupFormHandler(event) {
     const room_number = document.querySelector('#room_number-signup').value.trim();
   
     if (room_number && email && password && username) {
-      await fetch('/api/users/login', {
+      const response = await fetch('/api/users', {
         method: 'post',
         body: JSON.stringify({
           room_number,
@@ -21,7 +21,7 @@ async function signupFormHandler(event) {
       });
       // response status
       if (response.ok) {
-          document.location.replace('/')
+          document.location.replace('/dashboard/')
       } else {
             alert(response.statusText);
         }
@@ -45,7 +45,7 @@ async function signupFormHandler(event) {
                 });
             
                 if (response.ok) {
-                  document.location.replace('/');
+                  document.location.replace('/dashboard/');
                   console.log()
                 } else {
                   alert(response.statusText);

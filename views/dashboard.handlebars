@@ -1,18 +1,21 @@
-
 <section>
-  <h2>Create New Post</h2>
+<form class="create-post-form">
+<div class="form-floating container-lg ">
+  <label for="floatingTextarea">Title</label>
+  <input type="text" class="form-control" placeholder="Title" id="post-title floatingTextarea" name="post-title" />
+</div>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
+<div class="form-floating container-lg">
+  <label for="floatingTextarea2">Write your post here!</label>
+  <input type="text" class="form-control" placeholder="Leave a comment here" id="post-content floatingTextarea2" style="height: 100px" name="post-content" />
+
+  <div class="p-2 bd-highlight">
+      <button type="submit" class="btn btn-primary" id="post-submit-button"> Submit!</button>
+
+</div>
+</form>
+</section>
+<script src="/javascript/add-post.js"></script>
 
 {{#if posts.length}}
 <section>
@@ -27,5 +30,7 @@
   </ol>
 </section>
 {{/if}}
+
+<script src="/javascript/add-post.js"></script>
 
 </section>
