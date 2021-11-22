@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const {Post, User, Vote, Comment} = require('../../models');
 const { sequelize } = require('../../models/Post');
-const withAuth = require('../../utils/auth')
 
 router.get('/', (req, res) => {
     Post.findAll({
@@ -104,7 +103,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create a post
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
         post_content: req.body.post_content,

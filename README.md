@@ -22,8 +22,8 @@ to share AND user can keep up with posts created by others within their living c
 
 
 ## Deployed Application 
-Heroku:
-Github:
+Heroku: https://dorm-forum.herokuapp.com/
+Github: 
 URL link:
 
 

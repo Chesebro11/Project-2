@@ -8,7 +8,7 @@ async function editFormHandler(event) {
     ];
    
     if(comment_text) {
-        const response = await fetch('/api/posts/${id}',{ 
+        const response = await fetch(`/api/posts/${post_id}`,{ 
             method: 'PUT', 
             body: JSON.stringify({
                 post_id,

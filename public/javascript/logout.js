@@ -11,5 +11,5 @@ async function logout() {
     }
   }
   
-  document.querySelector('#dipcity').addEventListener('click', logout);
+  document.querySelector('#logout-button').addEventListener('click', logout);
   

@@ -34,11 +34,15 @@ app.set('view engine', 'handlebars');
 
 app.use(session(sess));
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // join public folder path
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(sess));
+
+app.use(require('./controllers/'));
+
 // enable routes
 app.use(routes);
 

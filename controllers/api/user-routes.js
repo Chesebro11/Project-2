@@ -139,7 +139,7 @@ router.delete('/:id', (req, res) => {
 //LOGOUT USER
 router.post('/logout', (req, res) => {
     if(req.session.loggedIn) {
-        req.sessions.destroy(() => {
+        req.sessions.destroy((err) => {
             res.status(204).end();
         });
     }
