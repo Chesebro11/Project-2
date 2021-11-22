@@ -95,6 +95,15 @@ router.get('/post/:id', (req, res) => {
             res.status(500).json(err);
           });
       });
+
+      //Creating post route
+      router.get('/create-post', (req,res) => {
+        if (req.session.loggedIn) {
+            res.redirect('/');
+            return;
+        }
+    res.render('create-post');
+    });
       
 
 

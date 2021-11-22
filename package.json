@@ -1,10 +1,11 @@
 {
   "name": "project-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Problem  As A busy college student living in a dorm room  I WANT to be able to easily communicate with others within my  dormitory to be informed of updates and activities  going on in my community  SO THAT I can be aware of whats going on around me",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/Chesebro11/Project-2#readme",
   "dependencies": {
+    "ansi-regex": "^6.0.1",
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.1.3",
     "connect-session-sequelize": "^7.1.2",
@@ -37,5 +39,6 @@
   },
   "devDependencies": {
     "jest": "^27.3.1"
-  }
+  },
+  "keywords": []
 }

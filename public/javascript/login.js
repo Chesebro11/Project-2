@@ -6,20 +6,27 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
+    const room_number = document.querySelector('#room_number-signup').value.trim();
   
+<<<<<<< HEAD
     if (username && email && password) {
       const response = await fetch('/api/users', {
+=======
+    if (room_number && email && password && username) {
+      await fetch('/api/users/login', {
+>>>>>>> origin
         method: 'post',
         body: JSON.stringify({
+          room_number,
           username,
           email,
-          password
+          password,
         }),
         headers: { 'Content-Type': 'application/json' }
       });
       // response status
       if (response.ok) {
-          console.log('achievement');
+          document.location.replace('/')
       } else {
             alert(response.statusText);
         }
@@ -44,6 +51,7 @@ async function signupFormHandler(event) {
             
                 if (response.ok) {
                   document.location.replace('/');
+                  console.log()
                 } else {
                   alert(response.statusText);
                 }
